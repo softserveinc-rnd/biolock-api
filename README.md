@@ -44,7 +44,7 @@ Enroll endpoint can be used to train the system to recognize specific user on hi
 Sample request
 
 ```sh
-curl -X POST --form upload=@/home/user/ecg/user.csv http://34.198.199.171::1111/enroll?apikey=c6qp3p4i6uulf39ms9f5u1ps6v&sampling_rate=512
+curl -X POST --form upload=@/home/user/ecg/user.csv http://34.198.199.171:1111/enroll?apikey=c6qp3p4i6uulf39ms9f5u1ps6v&sampling_rate=512
 ```
 sample response
 
