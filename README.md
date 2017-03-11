@@ -39,17 +39,17 @@ Enroll endpoint can be used to train the system to recognize specific user on hi
 | :-------------|:-------------:|:-----|
 | apikey| String        | Your valid api key. |
 | upload        | String        | CSV file with your ECG data for user which should be authenticated |
-
+| sampling_rate        | Integer        | Sampling rate (samples per second) in CSV file |
 
 Sample request
 
 ```sh
-curl -X POST --form upload=@/home/user/ecg/user.csv http://34.198.199.171::1111/enroll?apikey=c6qp3p4i6uulf39ms9f5u1ps6v
+curl -X POST --form upload=@/home/user/ecg/user.csv http://34.198.199.171::1111/enroll?apikey=c6qp3p4i6uulf39ms9f5u1ps6v&sampling_rate=512
 ```
 sample response
 
 ```json
-{"Status":"Ok","Message":"Model trained","Accuracy":"0.98"}
+{"Status":"Enrolled","Accuracy":0.999854,"Message":"Model trained"}
 ```
 
 ## Verify 
@@ -60,15 +60,16 @@ Verify endpoint allows testing user ECG (similar format as for Enroll endpoint),
 | Name | Type          | Description  |
 | :-------------|:-------------:|:-----|
 | apikey| String        | Your valid api key. |
-| upload        | String        | CSV file with your ECG data for user which should be authenticated
+| upload        | String        | CSV file with your ECG data for user which should be authenticated |
+| sampling_rate        | Integer        | Sampling rate (samples per second) in CSV file |
 
 ```sh
-curl -X POST --form upload=@/home/user/ecg/testuser.csv http://34.198.199.171:1111/verify?apikey=c6qp3p4i6uulf39ms9f5u1ps6v
+curl -X POST --form upload=@/home/user/ecg/testuser.csv http://34.198.199.171:1111/verify?apikey=c6qp3p4i6uulf39ms9f5u1ps6v&sampling_rate=512
 ```
 sample response
 
 ```json
-{"Status":"Ok","Message":"pass","Accuracy":"0.93"}  //user didn`t match
+{"Status":"Verified","Message":"fail","Probability":4.0381813E-15}  //user didn`t match
 or
-{"Status":"Ok","Message":"fail","Accuracy":"0.23"}  //user match
+{"Status":"Verified","UserName":"test","Message":"pass","Probability":0.989748}  //user match
 ```
