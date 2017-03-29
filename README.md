@@ -1,6 +1,8 @@
 # Biolock API
 
-Biolock API is API interface for training and testing ECG data for authentication user.
+Biolock is a smart system developed by SoftServe for continuous authentication and monitoring of human well-being, based on electrocardiogram (ECG) analysis with biosensors embedded into a vehicle’s steering wheel and a mobile application
+
+Biolock API is cloud based REST API interface for enrollment and verification of user by ECG data.
 
 ![Workflow](img/WorkFlow.png)
 
@@ -32,7 +34,7 @@ $ curl -X POST http://34.198.199.171:1111/register  -d 'name=test&email=test@tes
 
 ## Enroll
 
-Enroll endpoint can be used to train the system to recognize specific user on his/her ECG data. The ECG sample with 1000+ heartbeats is recommended to get better accuracy (500 beats is minimum). ECG data should be put in CSV file, where each line represent value in millivolts. Sampling rate should be provided as a parameter to the call. The Enroll action can take from 30 seconds to several minutes to complete depending on server load and data size (on 500 beats it typically takes few seconds).
+Enroll endpoint can be used to teach the system to recognize specific user on his/her ECG data. The ECG sample with 1000+ heartbeats is recommended to get better accuracy (500 beats is minimum). ECG data should be put in CSV file, where each line represent value in millivolts. Sampling rate should be provided as a parameter to the call. The Enroll action can take from 30 seconds to several minutes to complete depending on server load and data size (on 500 beats it typically takes few seconds).
 
 
 | Name | Type          | Description  |
